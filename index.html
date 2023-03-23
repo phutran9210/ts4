@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const nvRikkei=[
+        {
+            id : 1,
+            name: 'Nguyễn Văn A',
+            age : 25,
+            position : 'Nhân Viên'
+
+        },  {
+            id : 2,
+            name: 'Trần Văn C',
+            age : 35,
+            position : 'Trưởng Phòng'
+
+        },  {
+            id : 3,
+            name: 'Nguyễn Thị D',
+            age : 22,
+            position : 'Tester'
+
+        }
+        ];
+        function showNvRikkei(){
+            for (let nv of nvRikkei){
+                console.log(`ID: ${nv.id}-- Tên: ${nv.name}--Tuổi :${nv.age}--Vị Trí :${nv.position}`);
+            }
+        }
+        showNvRikkei();
+        // console.log(showNvRikkei());
+
+
+        function createNvRikkei(name,age,position){
+            const lastNvRikkei= nvRikkei[nvRikkei.length-1];
+            const newNvRikkei = {
+                id : lastNvRikkei.id+1,
+                name : name,
+                age : age,
+                position : position
+
+            };
+            nvRikkei.push(newNvRikkei);
+
+        }
+        // createNvRikkei('Ngô Bá Khá',27,'Trưởng Buồng');
+        // console.log(nvRikkei);
+
+        function updateNvRikkei(id,name,age,position) {
+            for (let nv of nvRikkei){
+                if (nv.id===id) {
+                    nv.name=name;
+                    nv.age = age;
+                    nv.position = position;
+                    return;
+                }else{
+                    console.log('ID khong ton tai');
+                }
+            }
+        }
+        // updateNvRikkei(1,'aaa',1,'abc');
+        // console.log(nvRikkei);
+
+        function deleteNvRikkei(id){
+            const index = nvRikkei.findIndex(nv => nv.id===id);
+            if (index!==-1){
+                nvRikkei.splice(index,1);
+                console.log(`Nhân viên ${id} đã bị xóa`);
+            }else {
+                console.log(`Nhân viên ${id} không tồn tại`);
+            }
+            deleteNvRikkei(1);
+            console.log(nvRikkei);
+        }
+    </script>
+</body>
+</html>
